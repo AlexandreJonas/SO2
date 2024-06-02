@@ -1,0 +1,27 @@
+create database SO2;
+use SO2;
+ 
+ create table Usuario
+ (usuarioID int not null AUTO_INCREMENT,
+ usuarioLogin varchar(50),
+ usuarioSenha varchar(50),
+ usuarioIsAdmin varchar(1),
+ primary key(usuarioID));
+ 
+ create table Item
+ (itemID int not null AUTO_INCREMENT,
+ itemNome varchar(100),
+ itemDescricao varchar(200),
+ itemCompraValor int,
+ itemVendaValor int,
+ itemEstoqueQtd int,
+ itemEstoqueMin int,
+ itemCategoria varchar(50),
+ itemLocal varchar(100),
+ itemGeral varchar(100),
+ primary key(itemID));
+ 
+ insert into Usuario values(1,'Alexandre','fatec','S') , (2,'Samuel','fatec','N');
+ 
+ insert into Item values (1,'Coca-Cola','Bebida Coca-Cola',10,15,50,20,'Bebida','',''), (2,'Guaraná','Bebida Guaraná',8,12,60,30,'Bebida','','');
+ 
