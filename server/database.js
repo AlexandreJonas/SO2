@@ -24,7 +24,6 @@ export async function getItems() {
 export async function getItem(id) {
     const result = await pool.query(`select * from item where itemID = ?`,[id])
     const rows = result[0]
-    console.log(rows)
     return rows[0]
 }
 
