@@ -10,17 +10,17 @@ type props = {
     seletorView: Function
 }
 
-export default function ListaItem(props:props) {
+export default function ListaItem(props: props) {
 
-    const [items,setItems] = useState<Item[]>([])
+    const [items, setItems] = useState<Item[]>([])
+    const [filtro, setFiltro] = useState("")
 
-    const getItems = async() =>  {
-        try 
-        {
+    const getItems = async () => {
+        try {
             const response = await fetch(`http://localhost:8080/items`)
             const jsonData = await response.json()
             setItems(jsonData)
-        } catch (error:any) {
+        } catch (error: any) {
             console.log(error.message)
         }
     }
@@ -29,16 +29,24 @@ export default function ListaItem(props:props) {
         getItems()
     }, [])
 
-    
-        let estilo = `collection-item active ${props.tema}`
-        return (
-            <div className="collection">
-                { console.log(items)}
-                 {items.map((item: any) => {
-                return (
-                    <ItemGrid tema={props.tema} item = {item} seletorView = {props.seletorView}/>
-                )
-            })}
+
+    let estilo = `collection-item active ${props.tema}`
+    return (
+        <div className="collection">
+
+            <div className="collection-item col s1">
+                <input defaultValue={filtro} onChange={(e) => setFiltro(e.target.value)} id="filtro" type="text" className="validate" name='filtro' />
+                <label className="active" htmlFor="filtro">Pesquisar</label>
             </div>
-        )
+
+            {items.map((item: any) => {
+                if ((filtro === "") || item.itemNome.includes(filtro)) {
+                    return (
+                        <ItemGrid tema={props.tema} item={item} seletorView={props.seletorView} />
+                    )
+                }
+
+            })}
+        </div>
+    )
 }

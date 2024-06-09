@@ -35,7 +35,7 @@ export default function BarraNavegacao (props:props) {
             <>
                 <nav className={estilo}>
                     <div className="nav-wrapper">
-                        <a className="brand-logo">SO2</a>
+                        <a className="brand-logo"> SO2</a>
                         <a data-target="mobile-menu" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
                             {gerarListaBotoes()}

@@ -3,6 +3,7 @@ import BarraNavegacao from "./barraNavegacao";
 import FormularioCadastro from "./formularioCadastro";
 import ListaItem from "./listaItem";
 import BtnCadastro from "./btnCadastro";
+import Login from "./login";
 
 
 type state = {
@@ -12,7 +13,7 @@ type state = {
 
 export const Roteador = () => {
     let Auxstate:state = {
-        tela: 'Home',
+        tela: 'Login',
         id:0
     }
 
@@ -26,9 +27,8 @@ export const Roteador = () => {
             id: id
         })
     }
-
     
-        let barraNavegacao = <BarraNavegacao seletorView={selecionarView} tema="purple lighten-4" botoes={['Home', 'Cadastro']} />
+        let barraNavegacao = <BarraNavegacao seletorView={selecionarView} tema="purple lighten-4" botoes={['Home', 'Cadastro', 'Logout']} />
         let estiloBotao = `btn waves-effect waves-light left purple lighten-4`
         switch (state.tela) {
             case 'Home':
@@ -47,6 +47,16 @@ export const Roteador = () => {
                         <FormularioCadastro tema="purple lighten-4" seletorView={selecionarView} id = {state.id} />
                     </>
                 )
+
+                case 'Login':
+                case 'Logout':
+                    barraNavegacao = <BarraNavegacao seletorView={selecionarView} tema="purple lighten-4" botoes={[]} />
+                    return (
+                        <>
+                            {barraNavegacao}
+                            <Login tema="purple lighten-4" seletorView={selecionarView} />
+                        </>
+                    )
 
             default:
                 return (

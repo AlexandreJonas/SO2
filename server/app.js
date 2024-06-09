@@ -6,7 +6,7 @@ const app = express()
 app.use(cors());
 app.use(express.json())
 
-app.get("/validaUsuario", async (req,res) => {
+app.post("/validaUsuario", async (req,res) => {
     const items = await validaUsuario(req.body)
     res.send(items)
 })

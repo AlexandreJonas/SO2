@@ -20,7 +20,7 @@ export default function ItemGrid(props: props) {
                 {props.item.itemNome}
 
                 <button className={estiloBotao} type="submit" name="action" onClick={(e: any) => props.seletorView(props.item.itemID, 'Cadastro', e)}>Editar
-                    <i className="material-icons right">device_hub </i>
+                    <i className="material-icons right">edit </i>
                 </button>
                 <a className="col s1 right"> </a>
                 <a className="right"> {'R$'} {props.item.itemVendaValor}</a>
