@@ -5,6 +5,7 @@
   "type": "module",
   "main": "databse.js",
   "scripts": {
+    "start": "PORT=3001 react-scripts --max_old_space_size=8128 start",
     "dev": "npx nodemon app.js"
   },
   "keywords": [],
