@@ -16,13 +16,13 @@ export async function validaUsuario(body){
 }
 
 export async function getItems() {
-    const result = await pool.query("select * from item")
+    const result = await pool.query("select * from Item")
     const rows = result[0]
     return rows
 }
 
 export async function getItem(id) {
-    const result = await pool.query(`select * from item where itemID = ?`,[id])
+    const result = await pool.query(`select * from Item where itemID = ?`,[id])
     const rows = result[0]
     return rows[0]
 }
