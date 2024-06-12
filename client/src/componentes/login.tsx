@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Usuario from "../model/usuario"
+import getBD from "../control/getBD"
 
 type props = {
     tema: string
@@ -21,8 +22,10 @@ export default function Login(props: props) {
     const [usuarios, setUsuarios] = useState<Usuario[]>([])
 
     const getUsuarios = async (e:any) => {
+        const url = `${getBD()}/validaUsuario`
+        console.log(url)
         try {
-            const response = await fetch(`http://localhost:8080/validaUsuario`, {
+            const response = await fetch(`${getBD()}/validaUsuario`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(usuario),

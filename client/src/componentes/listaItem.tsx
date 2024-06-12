@@ -3,6 +3,7 @@ import { Component, useEffect, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import ItemGrid from "./itemGrid";
 import Item from "../model/item";
+import getBD from "../control/getBD";
 
 
 type props = {
@@ -17,7 +18,7 @@ export default function ListaItem(props: props) {
 
     const getItems = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/items`)
+            const response = await fetch(`${getBD()}/items`)
             const jsonData = await response.json()
             setItems(jsonData)
         } catch (error: any) {

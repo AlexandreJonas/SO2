@@ -1,6 +1,7 @@
 import { Component, useEffect, useState } from "react";
 import Item from "../model/item";
 import { Grid, InputLabel, MenuItem, Select } from "@mui/material";
+import getBD from "../control/getBD";
 
 type props = {
     tema: string
@@ -16,7 +17,7 @@ export default function FormularioCadastro(props: props) {
     const getItem = async () => {
         if (props.id !== 0) {
             try {
-                const response = await fetch(`http://localhost:8080/items/${props.id}`);
+                const response = await fetch(`${getBD()}/items/${props.id}`);
                 const jsonData = await response.json();
                 setItem(jsonData)
                 setCategoria(jsonData.itemCategoria)
@@ -40,7 +41,7 @@ export default function FormularioCadastro(props: props) {
 
     const inserir = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/items`, {
+            const response = await fetch(`${getBD()}/items`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(item),
@@ -58,7 +59,7 @@ export default function FormularioCadastro(props: props) {
 
     const atualizar = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/items/${props.id}`, {
+            const response = await fetch(`${(getBD())}/items/${props.id}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(item),
